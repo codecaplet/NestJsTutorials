@@ -34,3 +34,5 @@ lerna-debug.log*
 !.vscode/extensions.json
 /*.prettierrc
 /hello-world/*.prettierrc
+/hello-world/node_modules
+/controllers-app/node_modules
