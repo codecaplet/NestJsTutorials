@@ -19,8 +19,8 @@ export class ChatGateway implements NestGateway {
 
   handleConnection(socket: any) {
     console.log('Connect', socket);
-    process.nextTick(() => {
-      socket.emit('allChats', this.chatService.getChats());
+    process.nextTick(async () => {
+      socket.emit('allChats', await this.chatService.getChats());
     });
   }
 
@@ -30,9 +30,9 @@ export class ChatGateway implements NestGateway {
 
   @Bind(MessageBody(), ConnectedSocket())
   @SubscribeMessage('chat')
-  handleNewMessage(chat: Chat, sender: any) {
+  async handleNewMessage(chat: Chat, sender: any) {
     console.log('New Chat', chat);
-    this.chatService.saveChat(chat);
+    await this.chatService.saveChat(chat);
     sender.emit('newChat', chat);
     sender.broadcast.emit('newChat', chat);
   }
