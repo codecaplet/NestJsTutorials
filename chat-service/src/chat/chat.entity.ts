@@ -16,6 +16,11 @@ export class Chat {
   })
   recipient: string;
 
+  @prop({
+    required: [true, 'Time is required'],
+  })
+  time: string;
+
   constructor(chat?: Partial<Chat>) {
     Object.assign(this, chat);
   }
