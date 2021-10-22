@@ -6,6 +6,6 @@ import { ChatService } from './chat.service';
 
 @Module({
   imports: [TypegooseModule.forFeature([Chat])],
-  providers: [ChatGateway, ChatService],
+  providers: [ChatGateway, ChatService]
 })
-export class ChatModule {}
+export class ChatModule { }
